@@ -27,8 +27,23 @@
 	  contents
 	{{/mayNotBeDiv}}
 
+	{{> propertiesListing}}
+	
 </body>
 
+<template name="propertiesListing">
+	<h3>Dynamic Input</h3>
+	{{> input inputData}}
+
+</template>
+
+<template name="numberInput">
+	<input type="number" value="{{val}}">
+</template>
+
+<template name="stringInput">
+	<input type="text" value="{{val}}">
+</template>
 
 
 <template name="ifEven">

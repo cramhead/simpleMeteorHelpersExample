@@ -26,6 +26,16 @@ if (Meteor.isClient) {
         else
             return Template._maybeDiv_noop;
     });
+
+    Template.propertiesListing.input = function(){
+      return Template['numberInput'];
+    };
+
+    Template.propertiesListing.inputData = function(){
+      return {val: 10};
+    };
+
+
 }
 
 if (Meteor.isServer) {
