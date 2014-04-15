@@ -1,3 +1,5 @@
+Properties = new Meteor.Collection('properties');
+
 if (Meteor.isClient) {
 
 
@@ -27,19 +29,30 @@ if (Meteor.isClient) {
             return Template._maybeDiv_noop;
     });
 
-    Template.propertiesListing.input = function(){
-      return Template['numberInput'];
-    };
+    Template.propertiesListing.input = function() {
+      if(this.tmpl){
+        return Template[this.tmpl];
+      }
+    };  
 
-    Template.propertiesListing.inputData = function(){
-      return {val: 10};
-    };
-
-
+    Template.propertiesListing.properties = function(){
+      return Properties.find();
+    }
 }
 
 if (Meteor.isServer) {
     Meteor.startup(function() {
-        // code to run on server at startup
+        if (Properties.find().count() === 0) {
+            var errCallback = function(err, result) {
+                if (err) {
+                    console.log("Error " + err.message);
+                } else {
+                    console.log("Success " + result);
+                }
+            };
+            for (var i = properties.length - 1; i >= 0; i--) {
+                Properties.insert(properties[i], errCallback);
+            };
+        }
     });
 }

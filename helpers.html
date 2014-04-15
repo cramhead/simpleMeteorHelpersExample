@@ -33,16 +33,18 @@
 
 <template name="propertiesListing">
 	<h3>Dynamic Input</h3>
-	{{> input inputData}}
+	{{#each properties}}
+		{{> input tmpl=tmpl data=data}}
+	{{/each}}
 
 </template>
 
 <template name="numberInput">
-	<input type="number" value="{{val}}">
+	<input name="{{../name}}" type="number" value="{{../data}}">
 </template>
 
 <template name="stringInput">
-	<input type="text" value="{{val}}">
+	<input name="{{../name}}" type="text" value="{{../data}}">
 </template>
 
 
