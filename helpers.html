@@ -1,0 +1,52 @@
+<head>
+  <title>helpers</title>
+</head>
+
+<body>
+ 
+
+  <h3>The isEven helper</h3>
+
+  	{{#ifEven value=2}}
+	  2 is even
+	{{else}}
+	  2 is odd
+	{{/ifEven}}
+
+
+	<h3>May Be Div</h3>
+
+	{{#maybeDiv true}}
+	  contents
+	{{/maybeDiv}}
+
+
+	<h3>May Not Be Div </h3>
+	
+	{{#mayNotBeDiv inDiv=false}}
+	  contents
+	{{/mayNotBeDiv}}
+
+</body>
+
+
+
+<template name="ifEven">
+
+  {{#if isEven value}}
+    {{> UI.contentBlock}}
+  {{else}}
+    {{> UI.elseBlock}}
+  {{/if}}
+</template>
+
+
+<template name="_maybeDiv_wrapInDiv">
+  <div>
+    {{> UI.contentBlock}}
+  </div>
+</template>
+
+<template name="_maybeDiv_noop">
+  {{> UI.contentBlock}}
+</template>
